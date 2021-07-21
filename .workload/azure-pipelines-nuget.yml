@@ -29,7 +29,8 @@ steps:
     command: 'pack'
     packagesToPack: '**/*.csproj'
     configuration: '$(buildConfiguration)'
-    versioningScheme: 'byBuildNumber'
+    versioningScheme: 'byEnvVar'
+    versionEnvVar: 'Build.BuildNuber'
 
 - script:  dotnet nuget push $(Build.ArtifactStagingDirectory)\*.nupkg --api-key $(apiKey) --source https://api.nuget.org/v3/index.json
 
