@@ -12,7 +12,8 @@ pool:
 name: $(Major).$(Minor)$(Rev:.r)-beta
 
 variables:
-- group: 'versioning'
+- group: versioning
+- group: nuget
 - name: 'buildConfiguration'
   value: 'Release'
 
@@ -30,7 +31,8 @@ steps:
     configuration: '$(buildConfiguration)'
     versioningScheme: 'byBuildNumber'
 
-- script: |
-    'dotnet nuget push $(Build.ArtifactStagingDirectory)/*.nupkg --api-key oy2kw5sqefrt3tcqp7da4tzyrn245qcupe4mzq4ruf7mx4 --source https://api.nuget.org/v3/index.json'
-
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'custom'
+    custom: 'nuget push $(Build.ArtifactStagingDirectory)/*.nupkg --api-key $(apiKey) --source https://api.nuget.org/v3/index.json'
 
