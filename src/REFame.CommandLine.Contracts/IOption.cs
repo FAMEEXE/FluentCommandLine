@@ -22,5 +22,20 @@ namespace REFame.CommandLine.Contracts
         /// The type of the option.
         /// </summary>
         Type Type { get; }
+
+        /// <summary>
+        /// Callback for obtaining the default value of the option
+        /// </summary>
+        Func<object> DefaultValueCallback { get; }
+
+        /// <summary>
+        /// Gets a value whether the option is required 
+        /// </summary>
+        bool Required { get; }
+
+        /// <summary>
+        /// Gets a value whether the option is hidden
+        /// </summary>
+        bool Hidden { get; }
     }
 }

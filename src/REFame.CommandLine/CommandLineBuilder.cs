@@ -35,12 +35,17 @@ namespace REFame.CommandLine
             {
                 var command = new Command(internalCommand.Name, internalCommand.Description);
                 command.AddAlias(internalCommand.Name);
+
                 foreach (IOption internalOption in internalCommand.Options)
                 {
                     var option = new Option(
                         internalOption.Aliases.ToArray(), 
                         internalOption.Description,
-                        internalOption.Type);
+                        internalOption.Type, 
+                        internalOption.DefaultValueCallback)
+                    {
+                        IsRequired = internalOption.Required
+                    };
 
                     command.AddOption(option);
                 }

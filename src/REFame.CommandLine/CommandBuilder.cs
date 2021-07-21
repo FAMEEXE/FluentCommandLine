@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using REFame.CommandLine.Contracts;
 using REFame.CommandLine.Internals;
 
@@ -12,7 +13,7 @@ namespace REFame.CommandLine
         private string name;
         private string description;
 
-        private readonly List<IOption> options = new List<IOption>();
+        private readonly List<IOption> options = new();
         private Action<string> callback;
 
         /// <inheritdoc/>
@@ -55,6 +56,11 @@ namespace REFame.CommandLine
         /// <inheritdoc/>
         public ICommand Build()
         {
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                throw new InvalidOperationException("Name cannot be null or empty");
+            }
+
             return new Command
             {
                 Callback = callback,

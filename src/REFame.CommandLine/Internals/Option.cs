@@ -15,5 +15,14 @@ namespace REFame.CommandLine.Internals
 
         /// <inheritdoc/>
         public Type Type { get; internal set; }
+
+        /// <inheritdoc />
+        public Func<object?> DefaultValueCallback { get; internal set; }
+
+        /// <inheritdoc />
+        public bool Required { get; internal set; }
+
+        /// <inheritdoc />
+        public bool Hidden { get; internal set; }
     }
 }

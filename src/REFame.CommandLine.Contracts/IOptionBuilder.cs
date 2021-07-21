@@ -1,4 +1,6 @@
-﻿namespace REFame.CommandLine.Contracts
+﻿using System;
+
+namespace REFame.CommandLine.Contracts
 {
     /// <summary>
     /// Build an option
@@ -27,5 +29,17 @@
         /// <param name="alias">The new alias</param>
         /// <returns></returns>
         IOptionBuilder<T> AddAlias(string alias);
+
+        /// <summary>
+        /// Sets the callback to obtain the default value
+        /// </summary>
+        /// <param name="getDefaultValue"></param>
+        IOptionBuilder<T> WithDefaultValue(Func<object> getDefaultValue);
+
+        /// <summary>
+        /// Sets the option as required
+        /// </summary>
+        /// <returns></returns>
+        IOptionBuilder<T> IsRequired();
     }
 }
