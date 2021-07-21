@@ -34,15 +34,8 @@ namespace REFame.CommandLine.Contracts
         /// </summary>
         /// <param name="callback">The callback of the command</param>
         /// <returns></returns>
-        ICommandBuilder Callback(Action callback);
+        ICommandBuilder Callback<T>(Action<T> callback);
 
-        /// <summary>
-        /// Set the callback of the command
-        /// </summary>
-        /// <param name="callback">The callback of the command</param>
-        /// <returns></returns>
-        ICommandBuilder Callback(Action<string> callback);
-        
         /// <summary>
         /// Build the Command.
         /// </summary>

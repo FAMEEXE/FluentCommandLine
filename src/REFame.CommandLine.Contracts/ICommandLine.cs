@@ -8,13 +8,13 @@ namespace REFame.CommandLine.Contracts
         /// <summary>
         /// All command of the command-line interface
         /// </summary>
-        public IEnumerable<ICommand> Commands { get; }
+        IEnumerable<ICommand> Commands { get; }
 
         /// <summary>
         /// Run the command-line with all its commands
         /// </summary>
         /// <param name="args"></param>
         /// <returns></returns>
-        public Task<int> Run(string[] args);
+        Task<int> Run(string[] args);
     }
 }

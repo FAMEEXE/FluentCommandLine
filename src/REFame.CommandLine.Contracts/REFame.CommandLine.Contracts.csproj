@@ -1,7 +1,5 @@
-<Project Sdk="Microsoft.NET.Sdk">
-
-  <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
-  </PropertyGroup>
-
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <PackageReference Include="System.CommandLine" Version="2.0.0-beta1.21308.1" />
+  </ItemGroup>
 </Project>

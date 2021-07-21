@@ -11,16 +11,31 @@ namespace REFame.CommandLine.Contracts
         /// <summary>
         /// All registered aliases for the command line tool.
         /// </summary>
-        public IEnumerable<string> Aliases { get; }
+        IEnumerable<string> Aliases { get; }
 
         /// <summary>
         /// The description of the option.
         /// </summary>
-        public string Description { get; }
+        string Description { get; }
 
         /// <summary>
         /// The type of the option.
         /// </summary>
-        public Type Type { get; }
+        Type Type { get; }
+
+        /// <summary>
+        /// Callback for obtaining the default value of the option
+        /// </summary>
+        Func<object> DefaultValueCallback { get; }
+
+        /// <summary>
+        /// Gets a value whether the option is required 
+        /// </summary>
+        bool Required { get; }
+
+        /// <summary>
+        /// Gets a value whether the option is hidden
+        /// </summary>
+        bool Hidden { get; }
     }
 }

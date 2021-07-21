@@ -12,7 +12,7 @@ namespace REFame.CommandLine
     /// <inheritdoc cref="ICommandLineBuilder"/>
     internal class CommandLineBuilder : ICommandLineBuilder
     {
-        private readonly List<ICommandBuilder> commands = new();
+        private readonly List<ICommandBuilder> commands = new List<ICommandBuilder>();
 
         /// <inheritdoc/>
         public ICommandLineBuilder AddCommand(Action<ICommandBuilder> configuring)
@@ -35,17 +35,22 @@ namespace REFame.CommandLine
             {
                 var command = new Command(internalCommand.Name, internalCommand.Description);
                 command.AddAlias(internalCommand.Name);
+
                 foreach (IOption internalOption in internalCommand.Options)
                 {
                     var option = new Option(
                         internalOption.Aliases.ToArray(), 
                         internalOption.Description,
-                        internalOption.Type);
+                        internalOption.Type, 
+                        internalOption.DefaultValueCallback)
+                    {
+                        IsRequired = internalOption.Required
+                    };
 
                     command.AddOption(option);
                 }
 
-                command.Handler = CommandHandler.Create(internalCommand.Callback);
+                command.Handler = internalCommand.CommandHandler;
                 root.AddCommand(command);
             }
 

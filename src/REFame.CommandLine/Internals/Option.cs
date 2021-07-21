@@ -8,12 +8,21 @@ namespace REFame.CommandLine.Internals
     internal class Option : IOption
     {
         /// <inheritdoc/>
-        public IEnumerable<string> Aliases { get; init; }
+        public IEnumerable<string> Aliases { get; internal set; }
         
         /// <inheritdoc/>
-        public string Description { get; init; }
+        public string Description { get; internal set; }
 
         /// <inheritdoc/>
-        public Type Type { get; init; }
+        public Type Type { get; internal set; }
+
+        /// <inheritdoc />
+        public Func<object?> DefaultValueCallback { get; internal set; }
+
+        /// <inheritdoc />
+        public bool Required { get; internal set; }
+
+        /// <inheritdoc />
+        public bool Hidden { get; internal set; }
     }
 }
