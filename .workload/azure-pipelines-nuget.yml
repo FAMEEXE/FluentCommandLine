@@ -30,11 +30,7 @@ steps:
     configuration: '$(buildConfiguration)'
     versioningScheme: 'byBuildNumber'
 
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'push'
-    packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
-    nuGetFeedType: 'external'
-    publishFeedCredentials: 'FluentCommandLine API'
+- script: |
+    'dotnet nuget push $(Build.ArtifactStagingDirectory)/*.nupkg --api-key oy2kw5sqefrt3tcqp7da4tzyrn245qcupe4mzq4ruf7mx4 --source https://api.nuget.org/v3/index.json'
 
 
