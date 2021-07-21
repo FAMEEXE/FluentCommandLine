@@ -31,8 +31,10 @@ steps:
     configuration: '$(buildConfiguration)'
     versioningScheme: 'byBuildNumber'
 
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'custom'
-    custom: 'nuget push'
-    arguments: '$(Build.ArtifactStagingDirectory)/*.nupkg --api-key $(apiKey) --source https://api.nuget.org/v3/index.json'
+- script:  dotnet nuget push $(Build.ArtifactStagingDirectory)/*.nupkg --api-key $(apiKey) --source https://api.nuget.org/v3/index.json
+
+# - task: DotNetCoreCLI@2
+#   inputs:
+#     command: 'custom'
+#     custom: 'nuget push'
+#     arguments: '$(Build.ArtifactStagingDirectory)/*.nupkg --api-key $(apiKey) --source https://api.nuget.org/v3/index.json'
