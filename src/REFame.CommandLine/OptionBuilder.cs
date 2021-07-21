@@ -7,7 +7,7 @@ namespace REFame.CommandLine
     /// <inheritdoc cref="IOptionBuilder"/>/>
     internal class OptionBuilder<T> : IOptionBuilder<T>
     {
-        private readonly List<string> alias = new();
+        private readonly List<string> alias = new List<string>();
         private string description;
 
         public IOption Build()

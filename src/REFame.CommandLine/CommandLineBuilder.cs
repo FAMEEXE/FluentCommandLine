@@ -12,7 +12,7 @@ namespace REFame.CommandLine
     /// <inheritdoc cref="ICommandLineBuilder"/>
     internal class CommandLineBuilder : ICommandLineBuilder
     {
-        private readonly List<ICommandBuilder> commands = new();
+        private readonly List<ICommandBuilder> commands = new List<ICommandBuilder>();
 
         /// <inheritdoc/>
         public ICommandLineBuilder AddCommand(Action<ICommandBuilder> configuring)

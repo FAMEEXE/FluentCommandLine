@@ -11,21 +11,21 @@ namespace REFame.CommandLine.Contracts
         /// <summary>
         /// The name of the command.
         /// </summary>
-        public string Name { get; }
+        string Name { get; }
 
         /// <summary>
         /// The description of the command.
         /// </summary>
-        public string Description { get; }
+        string Description { get; }
 
         /// <summary>
         /// All possible options of a command
         /// </summary>
-        public IEnumerable<IOption> Options { get; }
+        IEnumerable<IOption> Options { get; }
 
         /// <summary>
         /// The callback of the command
         /// </summary>
-        public Action<string> Callback { get; }
+        Action<string> Callback { get; }
     }
 }

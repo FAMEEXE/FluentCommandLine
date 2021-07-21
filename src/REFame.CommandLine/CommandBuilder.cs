@@ -12,7 +12,7 @@ namespace REFame.CommandLine
         private string name;
         private string description;
 
-        private readonly List<IOption> options = new();
+        private readonly List<IOption> options = new List<IOption>();
         private Action<string> callback;
 
         /// <inheritdoc/>
