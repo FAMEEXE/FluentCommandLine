@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.CommandLine.Invocation;
 
 namespace REFame.CommandLine.Contracts
 {
@@ -24,8 +25,8 @@ namespace REFame.CommandLine.Contracts
         IEnumerable<IOption> Options { get; }
 
         /// <summary>
-        /// The callback of the command
+        /// Get the handler of the command. This is the object for executing the command
         /// </summary>
-        Action<string> Callback { get; }
+        ICommandHandler CommandHandler { get; }
     }
 }

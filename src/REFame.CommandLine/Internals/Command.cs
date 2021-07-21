@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.CommandLine.Invocation;
 using REFame.CommandLine.Contracts;
 
 namespace REFame.CommandLine.Internals
@@ -16,7 +16,7 @@ namespace REFame.CommandLine.Internals
         /// <inheritdoc/>
         public IEnumerable<IOption> Options { get; internal set; }
 
-        /// <inheritdoc/>
-        public Action<string> Callback { get; internal set; }
+        /// <inheritdoc />
+        public ICommandHandler CommandHandler { get; set; }
     }
 }

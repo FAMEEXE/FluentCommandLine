@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
+using System.CommandLine.Invocation;
 using REFame.CommandLine.Contracts;
 using REFame.CommandLine.Internals;
 
@@ -12,9 +12,9 @@ namespace REFame.CommandLine
     {
         private string name;
         private string description;
-
         private readonly List<IOption> options = new();
-        private Action<string> callback;
+        private ICommandHandler commandHandler;
+
 
         /// <inheritdoc/>
         public ICommandBuilder WithName(string commandName)
@@ -40,16 +40,9 @@ namespace REFame.CommandLine
             return this;
         }
 
-        /// <inheritdoc/>
-        public ICommandBuilder Callback(Action action)
+        public ICommandBuilder Callback<T>(Action<T> action)
         {
-            callback = _ => action();
-            return this;
-        }
-
-        public ICommandBuilder Callback(Action<string> action)
-        {
-            callback = action;
+            commandHandler = CommandHandler.Create(action);
             return this;
         }
 
@@ -63,7 +56,7 @@ namespace REFame.CommandLine
 
             return new Command
             {
-                Callback = callback,
+                CommandHandler = commandHandler,
                 Description = description,
                 Name = name,
                 Options = options

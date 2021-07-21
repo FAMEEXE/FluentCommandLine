@@ -50,7 +50,7 @@ namespace REFame.CommandLine
                     command.AddOption(option);
                 }
 
-                command.Handler = CommandHandler.Create(internalCommand.Callback);
+                command.Handler = internalCommand.CommandHandler;
                 root.AddCommand(command);
             }
 
