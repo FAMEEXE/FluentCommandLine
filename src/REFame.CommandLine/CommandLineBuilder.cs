@@ -9,7 +9,7 @@ using IOption = REFame.CommandLine.Contracts.IOption;
 namespace REFame.CommandLine
 {
     /// <inheritdoc cref="ICommandLineBuilder"/>
-    internal class CommandLineBuilder : ICommandLineBuilder
+    public class CommandLineBuilder : ICommandLineBuilder
     {
         private readonly List<ICommandBuilder> commands = new List<ICommandBuilder>();
 
