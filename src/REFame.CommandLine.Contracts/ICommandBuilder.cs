@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CommandLine.Invocation;
 
 namespace REFame.CommandLine.Contracts
 {
@@ -28,7 +29,14 @@ namespace REFame.CommandLine.Contracts
         /// <param name="configure">Configuration of the command</param>
         /// <returns></returns>
         ICommandBuilder WithOption<T>(Action<IOptionBuilder<T>> configure);
-        
+
+        /// <summary>
+        /// Set the callback of the command
+        /// </summary>
+        /// <param name="handler"></param>
+        /// <returns></returns>
+        ICommandBuilder Callback(ICommandHandler handler);
+
         /// <summary>
         /// Set the callback of the command
         /// </summary>
