@@ -40,6 +40,14 @@ namespace REFame.CommandLine
             return this;
         }
 
+        public ICommandBuilder Callback(ICommandHandler handler)
+        {
+            commandHandler = handler;
+            return this;
+        }
+
+        /// <inheritdoc/>
+        [Obsolete]
         public ICommandBuilder Callback<T>(Action<T> action)
         {
             commandHandler = CommandHandler.Create(action);
